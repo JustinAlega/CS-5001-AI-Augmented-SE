@@ -1,0 +1,82 @@
+from typing import List, Tuple
+
+
+class PushBoxGame:
+    def __init__(self, map: List[str] = None):
+        self.map: List[str] = map if map is not None else []
+        self.player_row: int = 0
+        self.player_col: int = 0
+        self.targets: List[Tuple[int, int]] = []
+        self.boxes: List[Tuple[int, int]] = []
+        self.target_count: int = 0
+        self._is_game_over: bool = False
+        self.init_game()
+
+    def gat_map(self) -> List[str]:
+        return self.map
+
+    def is_game_over(self) -> bool:
+        return self._is_game_over
+
+    def get_player_col(self) -> int:
+        return self.player_col
+
+    def get_player_row(self) -> int:
+        return self.player_row
+
+    def get_targets(self) -> List[Tuple[int, int]]:
+        return self.targets
+
+    def get_boxes(self) -> List[Tuple[int, int]]:
+        return self.boxes
+
+    def get_target_count(self) -> int:
+        return self.target_count
+
+    def init_game(self) -> None:
+        for row_idx, row in enumerate(self.map):
+            for col_idx, ch in enumerate(row):
+                if ch == 'O':
+                    self.player_row = row_idx
+                    self.player_col = col_idx
+                elif ch == 'G':
+                    self.targets.append((row_idx, col_idx))
+                    self.target_count += 1
+                elif ch == 'X':
+                    self.boxes.append((row_idx, col_idx))
+
+    def check_win(self) -> bool:
+        box_on_target = sum(1 for box in self.boxes if box in self.targets)
+        if box_on_target == self.target_count:
+            self._is_game_over = True
+        return self._is_game_over
+
+    def move(self, direction: str) -> bool:
+        new_player_row = self.player_row
+        new_player_col = self.player_col
+
+        if direction == 'w':
+            new_player_row -= 1
+        elif direction == 's':
+            new_player_row += 1
+        elif direction == 'a':
+            new_player_col -= 1
+        elif direction == 'd':
+            new_player_col += 1
+
+        if self.map[new_player_row][new_player_col] != '#':
+            if (new_player_row, new_player_col) in self.boxes:
+                new_box_row = new_player_row + (new_player_row - self.player_row)
+                new_box_col = new_player_col + (new_player_col - self.player_col)
+
+                if self.map[new_box_row][new_box_col] != '#':
+                    # move the box
+                    self.boxes.remove((new_player_row, new_player_col))
+                    self.boxes.append((new_box_row, new_box_col))
+                    self.player_row = new_player_row
+                    self.player_col = new_player_col
+            else:
+                self.player_row = new_player_row
+                self.player_col = new_player_col
+
+        return self.check_win()

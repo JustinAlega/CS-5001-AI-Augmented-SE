@@ -1,0 +1,16 @@
+Translate the following source code from C++ code to Python code.
+
+Requirements:
+- Preserve the original program logic and behavior exactly.
+- Use idiomatic constructs and standard libraries appropriate for the target language.
+- Maintain the original control flow, data structures, and error handling semantics.
+- Do not introduce new features, optimizations, or refactoring unless required by the target language.
+- Keep function and variable names as close as possible to the original, adapting only when the target language requires it.
+- Include concise comments only where necessary to clarify non-obvious translations.
+- Output only the translated code, with no explanations.
+
+File: {filename}
+
+C++ code:
+{code}
+
