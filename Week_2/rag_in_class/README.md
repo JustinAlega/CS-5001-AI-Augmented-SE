@@ -184,5 +184,7 @@ ollama list
 1. Run input tests to see the baseline behavior.
 2. Generate refactored code with `zero_shot_refactor.py`.
 3. Run output tests to validate behavior preservation.
-4. Inspect `dataset/outputs/explanations/` to see what the model claimed it changed and why.
-5. Update the prompt and rerun 2-4.
+4. Inspect `dataset/outputs/explanations/` to see what the model claimed it changed and why. Check the errors.
+5. Build rag by running `rag/build_rag_index.py` using outputs on explanations folder only (`dataset/outputs/explanations`).
+6. Chat with the rag model by running `rag/rag_explain_chat.py`
+7. Update the prompt, rerun and observe the output. If it's not satisfied repeat steps 2-6.

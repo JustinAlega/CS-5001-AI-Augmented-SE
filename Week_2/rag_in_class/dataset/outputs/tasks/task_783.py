@@ -9,8 +9,8 @@ def rgb_to_hsv(r, g, b):
     Returns:
         tuple: (hue, saturation, value) where:
             - hue is in degrees [0, 360)
-            - saturation is percentage [0, 100]
-            - value is percentage [0, 100]
+            - saturation is in percent [0, 100]
+            - value is in percent [0, 100]
     """
     # Normalize RGB values to [0, 1] range
     r_norm = r / 255.0

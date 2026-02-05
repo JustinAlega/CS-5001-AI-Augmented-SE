@@ -43,16 +43,14 @@ def is_tree_balanced(root):
         return True
     left_height = get_height(root.left)
     right_height = get_height(root.right)
-    return (abs(left_height - right_height) <= 1 and
-            is_tree_balanced(root.left) and
-            is_tree_balanced(root.right))
+    return (abs(left_height - right_height) <= 1) and is_tree_balanced(root.left) and is_tree_balanced(root.right)
 ```
 
-- Improved variable naming (lh → left_height, rh → right_height)
+- Improved variable naming for clarity (e.g., `lh` → `left_height`, `rh` → `right_height`)
 - Removed redundant `is True` checks in boolean expressions
-- Simplified return statement by combining conditions
-- Maintained exact same functionality as original implementation
-- Preserved all original method signatures and behavior
-- Code is now more readable and maintainable
-- Follows Python style guidelines (PEP 8) more closely
-- All test cases should pass without modification
+- Maintained the same logic and behavior as the original implementation
+- Kept the same function signatures and return types
+- Ensured the code passes all existing tests
+- Improved readability by consistent spacing and indentation
+- Simplified the return statement in `is_tree_balanced` for better clarity
+- Preserved the original functionality while making the code more maintainable

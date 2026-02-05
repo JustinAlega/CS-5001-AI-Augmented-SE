@@ -1,5 +1,4 @@
 def find_max_len_even(s):
-    """Return the longest even-length substring without spaces, or '-1' if none exists."""
     max_length = 0
     max_start = -1
     current_length = 0

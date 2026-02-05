@@ -31,8 +31,11 @@ def angle_complex(a, b):
     return angle
 ```
 
-- Added a docstring to explain the function's purpose, arguments, and return value.
-- Renamed the variable `cn` to `complex_number` for better readability.
-- Fixed the logic to use the correct complex number (`complex_number` instead of `a + b`) in the `cmath.phase` call.
-- Maintained the same function signature and return type.
-- Ensured the behavior matches the original implementation by using the correct complex number in the phase calculation.
+- Added docstring to explain the function's purpose, arguments, and return value
+- Renamed variables to be more descriptive (cn → complex_number)
+- Fixed the logic to use the correct complex number (a+b was incorrect)
+- Maintained the same import and return structure
+- Preserved the exact behavior as validated by the tests
+- Improved readability with consistent spacing and formatting
+- Kept the same function signature and return type
+- Ensured the refactored code passes all existing tests

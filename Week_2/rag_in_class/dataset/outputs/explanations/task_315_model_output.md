@@ -33,7 +33,6 @@ def find_Max_Len_Even(str):
 
 ```python
 def find_max_len_even(s):
-    """Return the longest even-length substring without spaces, or '-1' if none exists."""
     max_length = 0
     max_start = -1
     current_length = 0
@@ -57,11 +56,11 @@ def find_max_len_even(s):
 ```
 
 - Renamed function and variables to follow Python naming conventions (snake_case)
-- Replaced while loop with for loop using enumerate for cleaner iteration
+- Replaced while loop with for loop using enumerate for better readability
 - Simplified logic by tracking current_start separately
 - Removed redundant checks by combining conditions
-- Improved readability with consistent spacing and comments
+- Improved variable names to be more descriptive
 - Maintained exact same behavior as original implementation
-- Added docstring to explain function purpose
+- Kept the same return format for edge cases
 - Reduced nesting levels for better readability
-- Preserved all edge case handling (empty string, no valid substrings, etc.)
+- Preserved all original functionality as validated by tests

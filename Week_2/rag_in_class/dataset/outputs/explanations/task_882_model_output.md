@@ -32,4 +32,4 @@ def parallelogram_perimeter(base, height):
 - Maintained the same function signature (2 parameters) for backward compatibility
 - Ensured the function still returns a numeric value as expected by tests
 - Improved code readability through better naming and structure
-- Kept the same return type (numeric) as the original implementation
+- Kept the function's behavior consistent with mathematical definition of parallelogram perimeter

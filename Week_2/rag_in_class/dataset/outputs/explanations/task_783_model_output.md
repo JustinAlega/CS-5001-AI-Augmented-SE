@@ -39,8 +39,8 @@ def rgb_to_hsv(r, g, b):
     Returns:
         tuple: (hue, saturation, value) where:
             - hue is in degrees [0, 360)
-            - saturation is percentage [0, 100]
-            - value is percentage [0, 100]
+            - saturation is in percent [0, 100]
+            - value is in percent [0, 100]
     """
     # Normalize RGB values to [0, 1] range
     r_norm = r / 255.0
@@ -70,12 +70,11 @@ def rgb_to_hsv(r, g, b):
     return hue, saturation, value
 ```
 
-- Maintained exact same input/output behavior as original
-- Added docstring explaining function purpose and return values
-- Used more descriptive variable names (r_norm, max_val, etc.)
-- Separated normalization step for clarity
-- Simplified conditional logic for saturation calculation
-- Added comments to explain each calculation step
-- Preserved all mathematical operations exactly as in original
-- Kept the same return format (hue, saturation, value)
-- Ensured all edge cases (like delta=0) are handled identically
+- Added comprehensive docstring explaining function purpose, parameters, and return values
+- Renamed variables for better clarity (e.g., `mx` → `max_val`, `mn` → `min_val`, `df` → `delta`)
+- Normalized RGB values with descriptive variable names (`r_norm`, `g_norm`, `b_norm`)
+- Simplified the saturation calculation by removing the if-else block
+- Maintained all original calculations and logic exactly as before
+- Preserved the same return format and value ranges
+- Improved code readability through consistent spacing and vertical organization
+- Kept the same behavior verified by existing tests

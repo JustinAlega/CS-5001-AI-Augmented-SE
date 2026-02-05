@@ -60,7 +60,8 @@ def sum_of_factors(n):
 - Renamed function to follow snake_case convention (`sumofFactors` → `sum_of_factors`)
 - Renamed variables to be more descriptive (`res` → `result`, `curr_sum` → `current_sum`, etc.)
 - Removed unnecessary type casting (`(int)(math.sqrt(n))` → `int(math.sqrt(n))`)
-- Improved code formatting and spacing for better readability
+- Improved indentation and spacing for better readability
 - Maintained all original logic and behavior exactly as in the original implementation
-- Kept the same mathematical operations and conditional checks
-- Preserved the exact same return values for all possible inputs
+- Preserved the same mathematical calculations and conditions
+- Kept the same return values and edge case handling
+- Ensured the function signature remains compatible with existing tests

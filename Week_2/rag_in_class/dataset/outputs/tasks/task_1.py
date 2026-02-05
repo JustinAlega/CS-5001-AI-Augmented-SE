@@ -3,8 +3,8 @@ def min_cost(cost, m, n):
 
     Args:
         cost: 2D list representing the cost matrix
-        m: row index of the destination cell (0-based)
-        n: column index of the destination cell (0-based)
+        m: row index of the target cell (0-based)
+        n: column index of the target cell (0-based)
 
     Returns:
         Minimum cost to reach cell (m, n) from (0, 0)
@@ -15,15 +15,15 @@ def min_cost(cost, m, n):
     # Base case: starting cell cost
     dp[0][0] = cost[0][0]
 
-    # Fill first column (can only come from above)
+    # Fill first column (only can come from above)
     for i in range(1, len(cost)):
         dp[i][0] = dp[i-1][0] + cost[i][0]
 
-    # Fill first row (can only come from left)
+    # Fill first row (only can come from left)
     for j in range(1, len(cost[0])):
         dp[0][j] = dp[0][j-1] + cost[0][j]
 
-    # Fill the rest of the table
+    # Fill rest of the table
     for i in range(1, len(cost)):
         for j in range(1, len(cost[0])):
             dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + cost[i][j]

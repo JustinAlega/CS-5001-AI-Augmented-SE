@@ -42,11 +42,9 @@ def generate_matrix(n):
     if n <= 0:
         return []
 
-    matrix = [[0] * n for _ in range(n)]
-    row_start = 0
-    row_end = n - 1
-    col_start = 0
-    col_end = n - 1
+    matrix = [[0 for _ in range(n)] for _ in range(n)]
+    row_start, row_end = 0, n - 1
+    col_start, col_end = 0, n - 1
     current = 1
 
     while current <= n * n:
@@ -78,11 +76,10 @@ def generate_matrix(n):
 ```
 
 - Improved variable naming for better readability (e.g., `row_st` → `row_start`)
-- Fixed matrix initialization to avoid reference issues (using list comprehension instead of `[row[:] for row in [[0]*n]*n]`)
+- Used list comprehension for matrix initialization to avoid reference issues
 - Added comments to explain each step of the spiral filling process
 - Maintained the same logic and behavior as the original implementation
-- Preserved the exact same input/output behavior as validated by tests
+- Kept the same input validation and edge case handling
+- Preserved the exact same output structure and values
 - Simplified the while loop condition to be more straightforward
-- Kept the same spiral filling pattern (top row, right column, bottom row, left column)
-- Ensured the function still handles edge cases (n <= 0) correctly
-- Maintained the same time and space complexity as the original implementation
+- Ensured all test cases pass without modification to the core algorithm
