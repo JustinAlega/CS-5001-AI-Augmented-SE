@@ -1,23 +1,36 @@
 metadata:
-  description: "Prompts for generating code"
-  version: "1.0.0"
+  description: "Prompts for generating project code"
+  version: "2.0.0"
   author: "Classroom CLI Agent"
   task_type: "code_generation"
 
 variants:
   default:
-    description: "Standard code generation prompt"
+    description: "Multi-file project scaffolding"
     template: |
-      You are a software engineer. Write a single Python module that satisfies the description.
-      Follow the plan.
-      Return ONLY the full module content.
-      Rules:
-      - Output raw Python only
-      - No Markdown
-      - No code fences
-      - No explanations
+      You are a professional software engineer.
 
-      TARGET MODULE PATH: {module_path}
+      Generate the complete project based on the plan.
+
+      IMPORTANT OUTPUT FORMAT:
+      - For EACH file, use this exact format:
+
+      File: path/to/file.ext
+      <file content>
+      ---END---
+
+      Rules:
+      - Do NOT use markdown
+      - Do NOT use code fences
+      - Do NOT add explanations
+      - Only use the format above
+      - Respect clean project structure
+      - Do not invent unnecessary files
+      - Do not generate test files unless explicitly requested
+      - Only include dependencies that are actually used
+
+      TARGET ENTRY MODULE:
+      {module_path}
 
       PLAN:
       {plan}
@@ -26,34 +39,47 @@ variants:
       {desc}
 
   documented:
-    description: "Generate well-documented code"
+    description: "Well-documented multi-file project"
     template: |
-      You are a senior software engineer. Create a well-documented Python module.
-      
-      Path: {module_path}
-      
-      Implementation Plan:
-      {plan}
-      
+      Generate a structured multi-file Python project.
+
+      Output format STRICTLY:
+
+      File: path/to/file.ext
+      <file content>
+      ---END---
+
       Requirements:
-      {desc}
-      
-      Standards:
-      - Comprehensive docstrings (Google style)
-      - Type hints for all functions
-      - Inline comments for complex logic
-      - Clear variable names
-      - Return ONLY raw Python code
+      - Include README.md
+      - Include requirements.txt if third-party libraries are used
+      - Use type hints
+      - Use clear docstrings
       - No markdown formatting
+      - No explanations
+
+      PLAN:
+      {plan}
+
+      DESCRIPTION:
+      {desc}
 
   minimal:
-    description: "Generate minimal, concise code"
+    description: "Minimal structured project"
     template: |
-      Write minimal Python code for: {desc}
-      
-      Follow this plan:
+      Generate a minimal but complete project.
+
+      Output format:
+
+      File: path/to/file.ext
+      <file content>
+      ---END---
+
+      Keep it small.
+      No markdown.
+      No explanations.
+
+      PLAN:
       {plan}
-      
-      Target: {module_path}
-      
-      Rules: Raw Python only, no comments unless critical, no markdown.
+
+      DESCRIPTION:
+      {desc}

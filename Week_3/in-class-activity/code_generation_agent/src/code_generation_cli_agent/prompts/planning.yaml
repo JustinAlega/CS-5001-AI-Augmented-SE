@@ -1,53 +1,53 @@
 metadata:
   description: "Prompts for creating implementation plans"
-  version: "1.0.0"
+  version: "2.1.0"
   author: "Classroom CLI Agent"
   task_type: "planning"
 
 variants:
   default:
-    description: "Standard planning prompt for code generation"
+    description: "Project scaffolding planning"
     template: |
-      You are a senior software engineer. Create a short, actionable implementation plan with ordered steps.
-      
+      You are a senior software engineer.
+
+      Create an implementation plan for scaffolding a complete project.
+
       Constraints:
-      - Keep the solution minimal and readable
-      - Assume standard library only unless the description requires otherwise
-      - Do not write code yet
+      - The solution may include multiple files
+      - Include README.md and requirements.txt when appropriate
+      - Respect clean project structure
+      - Keep it minimal and readable
+      - Do NOT write code yet
       - Output plain text only
 
-      TARGET MODULE PATH: {module_path}
+      STRUCTURAL REQUIREMENTS:
+      - Explicitly show the full project directory structure before describing files.
+      - If creating a Python package folder, you MUST include an __init__.py file.
+      - Imports must match the proposed directory structure.
+      - Assume the application will be executed from the project root.
+      - Avoid unnecessary nested "src/" folders unless explicitly required.
+      - Do not assume packages without generating __init__.py.
+      - Ensure the entry module can run without ModuleNotFoundError.
+      - Validate import paths logically based on execution context.
+
+      OUTPUT FORMAT RULES:
+      - When generating files, output ONLY raw file contents.
+      - Do NOT include separators like ---END---, ``` , or file boundary markers inside file content.
+      - Do NOT include markdown formatting.
+      - Do NOT include commentary.
+      - Each file must contain only valid code or text.
+      - No trailing markers or delimiters are allowed.
+
+
+      TARGET ENTRY MODULE: {module_path}
 
       DESCRIPTION:
       {desc}
 
-  detailed:
-    description: "More detailed planning with architecture considerations"
-    template: |
-      You are a senior software architect. Create a comprehensive implementation plan.
-      
-      TARGET MODULE PATH: {module_path}
-      
-      REQUIREMENTS:
-      {desc}
-      
-      Your plan should include:
-      1. Architecture overview
-      2. Key components and their responsibilities
-      3. Data structures needed
-      4. Function signatures
-      5. Dependencies (prefer standard library)
-      6. Edge cases to handle
-      7. Testing considerations
-      
-      Output as numbered steps in plain text.
-
-  minimal:
-    description: "Quick planning for simple tasks"
-    template: |
-      Create a brief plan (3-5 steps) for implementing:
-      {desc}
-      
-      Target file: {module_path}
-      
-      Keep it simple and actionable.
+      Your plan must include:
+      1. Project directory structure
+      2. Files to be created
+      3. Purpose of each file
+      4. Key components and responsibilities
+      5. Dependencies (prefer standard library unless required)
+      6. Explanation of how imports will resolve correctly when executed

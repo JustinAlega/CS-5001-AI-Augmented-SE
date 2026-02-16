@@ -143,10 +143,10 @@ def run(argv: list[str] | None = None) -> int:
         print(f"Planning: {args.planning}, Code gen: {args.codegen}\n")
     
     # Handle commit command
-    if args.cmd == "commit":
-        if not args.repo:
-            print("Error: --repo is required for commit command", file=sys.stderr)
-            return 1
+    if args.cmd == "create":
+        if not args.module:
+            args.module = None  # Let Agent handle multi-file scaffolding
+            print(f"Module path omitted: Agent will scaffold full project structure")
     
     # Ensure repo exists for commands that need it
     if args.cmd in ["create", "commit"]:
