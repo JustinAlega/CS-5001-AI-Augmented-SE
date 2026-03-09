@@ -1,0 +1,9 @@
+autogen-ext[openai]
+autogen-agentchat
+requests
+click
+rich
+pathlib
+keyring
+flask
+flask-cors
