@@ -1,17 +1,7 @@
 #!/usr/bin/env python3
-"""
-Single Agent RAG System
 
-Reads documents from the `docs/` directory, builds a FAISS index, and starts an interactive chat with an LLM.
+#Single Agent RAG System
 
-Usage:
-  python single_agent_rag.py
-
-Configuration (Environment Variables):
-  OLLAMA_MODEL        (default: devstral-small-2:24b-cloud)
-  OLLAMA_TEMPERATURE  (default: 0.0)
-  OLLAMA_EMBED_MODEL  (default: nomic-embed-text)
-"""
 
 from __future__ import annotations
 
@@ -25,7 +15,7 @@ from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
-# -------------------- Configuration --------------------
+# config
 
 DOCS_DIR = Path("docs").resolve()
 INDEX_DIR = Path("rag_index").resolve()
@@ -41,8 +31,7 @@ If the answer is not contained within the context, simply state "I don't know ba
 """
 
 
-# -------------------- Utilities --------------------
-
+# utils
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
 
@@ -67,8 +56,7 @@ def format_docs(docs: List[Document]) -> str:
     return "\n\n".join(parts)
 
 
-# -------------------- Indexing --------------------
-
+# index
 def build_index() -> FAISS | None:
     print(f"Loading documents from {DOCS_DIR} ...")
     docs = load_docs(DOCS_DIR)
@@ -97,8 +85,7 @@ def build_index() -> FAISS | None:
     return vectordb
 
 
-# -------------------- Chat Loop --------------------
-
+# chat
 def chat_loop(vectordb: FAISS) -> None:
     print(f"Initializing Chat LLM ({LLM_MODEL})...")
     llm = ChatOllama(model=LLM_MODEL, temperature=LLM_TEMP)
